@@ -25,43 +25,31 @@ function setup() {
   // Get the counter span element from the document
   const ctr = document.getElementById(b);
 
+  function updateUI(): void {
+    ctr!.textContent = c.toString(); // convert number → string
+    document.title = `Clicked ${c}`;
+    document.body.style.backgroundColor = c % 2 ? "pink" : "lightblue";
+  }
+
   // Check if any element is missing, then exit the function
   if (!bI || !bD || !bR || !ctr) return;
 
   // Add click event to the increment button
   bI.addEventListener("click", () => {
-    // Increase the counter by 1
     c++;
-    // Update the counter display
-    ctr.innerHTML = `${c}`;
-    // Update the document title
-    document.title = "Clicked " + c;
-    // Change the background color based on even/odd count
-    document.body.style.backgroundColor = c % 2 ? "pink" : "lightblue";
+    updateUI();
   });
 
   // Add click event to the decrement button
   bD.addEventListener("click", () => {
-    // Decrease the counter by 1
     c--;
-    // Update the counter display
-    ctr.innerHTML = `${c}`;
-    // Update the document title
-    document.title = "Clicked " + c;
-    // Change the background color based on even/odd count
-    document.body.style.backgroundColor = c % 2 ? "pink" : "lightblue";
+    updateUI();
   });
 
   // Add click event to the reset button
   bR.addEventListener("click", () => {
-    // Reset the counter to 0
     c = 0;
-    // Update the counter display
-    ctr.innerHTML = `${c}`;
-    // Update the document title
-    document.title = "Clicked " + c;
-    // Change the background color based on even/odd count
-    document.body.style.backgroundColor = c % 2 ? "pink" : "lightblue";
+    updateUI();
   });
 }
 
